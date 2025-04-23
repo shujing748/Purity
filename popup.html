@@ -1,0 +1,168 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="appName">Purity</title>
+  <style>
+    body {
+      width: 200px;
+      padding: 15px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #333;
+      margin: 0 0 15px 0;
+      text-align: center;
+      font-weight: 600;
+    }
+    .switch-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .switch-label {
+      font-size: 14px;
+      color: #555;
+      flex-grow: 1;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #5d9c59;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: #5d9c59;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    #emergencyReset {
+      background: #ff4444;
+      color: white;
+      border: none;
+      padding: 8px;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2 data-i18n="appName">Purity</h2>
+  
+  <div class="switch-container">
+    <span class="switch-label" data-i18n="toggleLabel">启用广告拦截</span>
+    <label class="switch">
+      <input type="checkbox" id="toggleSwitch">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <button id="emergencyReset" data-i18n="emergencyReset">恢复当前页面</button>
+
+  <div class="footer-links">
+    <a href="options.html" target="_blank" data-i18n="options">设置</a>
+    <a href="#" id="refreshPage" data-i18n="refreshPage">刷新页面</a>
+  </div>
+
+  <!-- 在现有内容后添加 -->
+<section id="rules">
+  <h1>规则设置</h1>
+  <div class="rule-controls">
+    <div class="rule-option">
+      <label class="switch">
+        <input type="checkbox" id="enableEasyList" checked>
+        <span class="slider"></span>
+      </label>
+      <label for="enableEasyList">启用 EasyList</label>
+    </div>
+    
+    <div class="rule-option">
+      <label class="switch">
+        <input type="checkbox" id="enableEasyPrivacy">
+        <span class="slider"></span>
+      </label>
+      <label for="enableEasyPrivacy">启用 EasyPrivacy</label>
+    </div>
+    
+    <div class="rule-info">
+      <p>动态规则: <span id="ruleCount">0</span> 条</p>
+      <p>最后更新: <span id="lastUpdated">从未更新</span></p>
+    </div>
+    
+    <button id="updateRules" class="update-button">立即更新规则</button>
+  </div>
+</section>
+
+<style>
+  .rule-controls {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .rule-option {
+    margin-bottom: 10px;
+  }
+  .update-button {
+    background: #5d9c59;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+
+  <script src="popup.js"></script>
+</body>
+</html>
